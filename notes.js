@@ -17,7 +17,7 @@ let saveNotes = (notes) => {
 
 //helper function to print out a note's contents
 let printNote = (note) => {
-    console.log('___')
+    console.log('____')
     console.log(`Title: ${note.title}`)
     console.log(`Body: ${note.body}`)
 }
