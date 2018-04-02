@@ -36,8 +36,6 @@ let getNote = (title) => {
     notes = fetchNotes()
 
     notes = notes.filter((note) => note.title === title)
-    if (notes.length === 0)
-        return `Cannot find ${title}.`
     return notes[0]
 }
 
@@ -45,6 +43,10 @@ let removeNote = (title) => {
     notes = fetchNotes()
     let newNotes = notes.filter((note) => note.title != title)
     saveNotes(newNotes)
+    if(newNotes.length !== notes.length)
+        return true
+    else
+        return false
 }
 
 module.exports = {
