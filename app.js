@@ -8,18 +8,18 @@ if (argv.add){
     let note = notes.addNote(argv.title, argv.body)
     if(note){
         console.log('Note created')
-        console.log(`Title: ${note.title}`)
-        console.log(`Body: ${note.body}`)
+        notes.printNote(note)
     }else
         console.log(`${argv.title} was a duplicate`)
 } else if (argv.list){
-   console.log(notes.getAll())
+    notes.getAll().forEach(note => {
+        notes.printNote(note)
+    });
 } else if (argv.read){
-    let readNote = notes.getNote(argv.title)
-    if (readNote){
+    let note = notes.getNote(argv.title)
+    if (note){
         console.log('Found note')
-        console.log(`Title: ${readNote.title}`)
-        console.log(`Body: ${readNote.body}`)
+        notes.printNote(note)
     }else
         console.log(`Could not find ${argv.title} in notes`)
 } else if (argv.remove){
@@ -29,4 +29,3 @@ if (argv.add){
 } else{
     console.log('Command not recognized')
 }
-
